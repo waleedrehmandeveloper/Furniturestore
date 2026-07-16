@@ -1,0 +1,469 @@
+:root{
+    --textFont: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    --headingText : 30px;
+    --headingtopmargin : 15px;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+.topnavbar{
+    width: 100%;
+    height: 80px;
+    background-color: #1b1b1b;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 60px;
+}
+.navimage{
+    width: 30%;
+    background-color: transparent;
+}
+.navbarsearchbox{
+    padding: 10px 20px;
+    background-color: white;
+    width: 40%;
+    height: 50px;
+    border-radius: 50px;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.navbarsearchbox svg{
+    font-size: 35px;
+    cursor: pointer;
+}
+.navbarsearchbox input{
+    outline: none;
+    border: none;
+    background-color: transparent;
+    flex: 1;
+    height: 100%;
+}
+.navicons{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    width: 30%;
+    background-color: transparent;
+    gap: 20px;
+}
+.navicons svg{
+    color: white;
+    font-size: 35px;
+    cursor: pointer;
+}
+
+/* Bottom Navbar */
+.bottomnavbar{
+    background-color: rgb(20, 20, 20);
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}   
+.nav-links{
+    list-style: none;
+    display: flex;
+    gap: 80px;
+}
+.nav-links li a{
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+/* NavbarScrollingEffect */
+/* Top Navbar */
+.topnavbar{
+    transition: all .4s ease;
+}
+
+.topnavbaranime{
+    transform: translateY(-20%);
+    opacity: 0;
+}
+
+/* Bottom Navbar Scroll State */
+.bottomnavbar{
+    transition: all .4s ease;
+}
+
+.bottomnavbaranime{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    animation: navbarSlide .4s ease;
+}
+
+/* Initial State */
+.nav-links li{
+    opacity: 1;
+    transform: translateY(0);
+}
+.animate-links li{
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: slideDown .5s forwards;
+}
+
+/* Animate when navbar becomes fixed */
+.bottomnavbaranime .nav-links li{
+    animation: slideDown .4s forwards;
+}
+
+/* Stagger Effect */
+.bottomnavbaranime .nav-links li:nth-child(1){animation-delay:.05s;}
+.bottomnavbaranime .nav-links li:nth-child(2){animation-delay:.10s;}
+.bottomnavbaranime .nav-links li:nth-child(3){animation-delay:.15s;}
+.bottomnavbaranime .nav-links li:nth-child(4){animation-delay:.20s;}
+.bottomnavbaranime .nav-links li:nth-child(5){animation-delay:.25s;}
+.bottomnavbaranime .nav-links li:nth-child(6){animation-delay:.30s;}
+.bottomnavbaranime .nav-links li:nth-child(7){animation-delay:.35s;}
+.bottomnavbaranime .nav-links li:nth-child(8){animation-delay:.40s;}
+
+@keyframes slideDown{
+    from{
+        opacity:0;
+        transform:translateY(-20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes navbarSlide{
+    from{
+        transform:translateY(-100%);
+    }
+    to{
+        transform:translateY(0);
+    }
+}
+
+/* Banner Section */
+.banner{
+    width: 100%;
+    height: calc(100vh - 150px);
+    position: relative;
+    overflow: hidden;
+}
+
+.swiper{
+    width: 100%;
+    height: 100%;
+}
+.swiper-slide img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 6s ease;
+}
+.swiper-slide-active img {
+    transform: scale(1.08);
+}
+.swiper-slide{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    background: #000;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Swiper Pagination Bullets (Scoped to Banner) */
+.mySwiper .swiper-pagination-bullet {
+    background: #ffffff !important;
+    opacity: 0.4;
+    width: 12px !important;
+    height: 12px !important; 
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    margin-inline: 8px !important;
+}
+
+.mySwiper .swiper-pagination-bullet-active {
+    background: #ffffff !important;
+    opacity: 1;
+    width: 24px !important;
+    border-radius: 4px !important;
+}
+
+/* Category Slider styling */
+.sliderbox {
+    width: 100%;
+    margin-top: 10px;
+    position: relative;
+}
+
+.category-sliderbox {
+    height: 450px; /* Original height for category cards */
+}
+
+.featured-sliderbox {
+    height: 360px; /* Reduced height for featured product cards */
+}
+
+/* --- Category Slider Specific Styles --- */
+.mySwiperSlider {
+    width: 100%;
+    height: 100%;
+    padding-bottom: 45px;
+}
+
+.mySwiperSlider .swiper-slide {
+    position: relative;
+    overflow: hidden;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
+    cursor: pointer;
+}
+
+.mySwiperSlider .swiper-slide:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+}
+
+.mySwiperSlider .swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.mySwiperSlider .swiper-slide:hover img {
+    transform: scale(1.08);
+}
+
+/* Category Text Overlay */
+.mySwiperSlider .category-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 25px;
+    transition: background 0.3s ease;
+}
+
+.mySwiperSlider .swiper-slide:hover .category-overlay {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0) 100%);
+}
+
+.mySwiperSlider .category-overlay span {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.mySwiperSlider .swiper-pagination-bullet {
+    background: #000000 !important;
+    opacity: 0.25;
+    width: 10px !important;
+    height: 10px !important;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    margin-inline: 6px !important;
+}
+
+.mySwiperSlider .swiper-pagination-bullet-active {
+    background: #1b1b1b !important;
+    opacity: 1;
+    width: 22px !important;
+    border-radius: 5px !important;
+}
+
+
+/* --- Featured Slider Specific Styles --- */
+.myFeaturedSlider {
+    width: 100%;
+    height: 100%;
+    padding-bottom: 45px;
+}
+
+.myFeaturedSlider .swiper-slide {
+    position: relative;
+    overflow: hidden;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
+    cursor: pointer;
+}
+
+.myFeaturedSlider .swiper-slide:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+}
+
+/* Reduced height of the image on the card as requested */
+.myFeaturedSlider .swiper-slide img {
+    width: 100%;
+    height: 100%; /* Height is responsive to the smaller 360px featured-sliderbox */
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.myFeaturedSlider .swiper-slide:hover img {
+    transform: scale(1.08);
+}
+
+/* Featured Text Overlay */
+.myFeaturedSlider .category-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 25px;
+    transition: background 0.3s ease;
+}
+
+.myFeaturedSlider .swiper-slide:hover .category-overlay {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0) 100%);
+}
+
+.myFeaturedSlider .category-overlay span {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.myFeaturedSlider .swiper-pagination-bullet {
+    background: #000000 !important;
+    opacity: 0.25;
+    width: 10px !important;
+    height: 10px !important;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    margin-inline: 6px !important;
+}
+
+.myFeaturedSlider .swiper-pagination-bullet-active {
+    background: #1b1b1b !important;
+    opacity: 1;
+    width: 22px !important;
+    border-radius: 5px !important;
+}
+
+
+/* --- Shared Slider Buttons styling (Scoped to .sliderbox) --- */
+/* Hide default Swiper font arrows */
+.sliderbox .swiper-button-next::after,
+.sliderbox .swiper-button-prev::after {
+    display: none;
+}
+
+.sliderbox .leftrighticonbox {
+    width: 60px !important;
+    height: 60px !important;
+    background-color: #ffffff !important;
+    border: 1px solid #000000 !important;
+    border-radius: 50% !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    cursor: pointer !important;
+    z-index: 999 !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    margin-top: 0 !important;
+}
+
+.sliderbox .swiper-button-next {
+    right: -30px !important;
+}
+
+.sliderbox .swiper-button-prev {
+    left: -30px !important;
+}
+
+.leftrighticons {
+    width: 25px !important;
+    height: 25px !important;
+    transition: transform 0.3s ease !important;
+}
+
+.leftrighticons path:not([fill="none"]) {
+    fill: #1b1b1b !important;
+    transition: fill 0.3s ease !important;
+}
+
+.sliderbox .leftrighticonbox:hover {
+    background-color: #1b1b1b !important;
+    border-color: #1b1b1b !important;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.16) !important;
+}
+
+.sliderbox .leftrighticonbox:hover .leftrighticons path:not([fill="none"]) {
+    fill: #ffffff !important;
+}
+
+.sliderbox .swiper-button-next:hover .leftrighticons {
+    transform: translateX(2px) !important;
+}
+
+.sliderbox .swiper-button-prev:hover .leftrighticons {
+    transform: translateX(-2px) !important;
+}
+
+/* Main Layout Styling */
+main{
+    background-color: rgb(255, 253, 250);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 40px;
+}
+.sections{
+    width: 100%;
+    height: auto;
+    background-color: transparent;
+    font-family: var(--textFont);
+    margin-bottom: 60px;
+}
+.headingbox{
+    width: 100%;
+    height: auto;
+    margin-bottom: 30px;
+}
+.headingbox h2{
+    font-weight: 700;
+    font-size: var(--headingText);
+    margin-bottom: var(--headingtopmargin);
+}
